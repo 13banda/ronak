@@ -11,18 +11,24 @@
     "antd-dayjs-webpack-plugin": "^0.0.9",
     "babel-plugin-import": "^1.13.0",
     "craco-antd": "^1.14.1",
+    "foreman": "^3.0.1",
+    "fs-extra": "^9.0.0",
     "nodemon": "^2.0.2",
+    "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-side-effect": "^2.1.0",
     "webpack-bundle-analyzer": "^3.6.1",
     "webpackbar": "^4.0.0"
   },
   "homepage": ".",
   "scripts": {
-    "start": "nodemon -w craco.config.js -w ./src/style/AntDesign/customTheme.less --exec 'craco start'",
+    "start": "nf start",
     "dev": "yarn start",
     "build": "craco build",
+    "route": "node scripts/build-router.js",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
@@ -40,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "prettier": "^2.0.2"
   }
 }

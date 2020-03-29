@@ -8,6 +8,11 @@ const path = require("path");
 
 module.exports = {
     reactScriptsVersion: "react-scripts" /* (default value) */,
+    eslint: {
+        enable: true /* (default value) */,
+        mode: "extends" /* (default value) */ || "file",
+        configure: { /* Any eslint configuration options: https://eslint.org/docs/user-guide/configuring */ },
+    },
     webpack: {
         plugins: [
           new WebpackBar({ profile: true }),
