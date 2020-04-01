@@ -1,4 +1,5 @@
 const { routes, dynamicImport } = require("../config/config");
+const defaultSetting = require("../config/defaultSetting")
 const routerfilePath = "src/pages/.App/Routers.js";
 let r = [];
 function renderRoute(item) {
@@ -29,18 +30,20 @@ import { BrowserRouter as Router } from "react-router-dom";
 import LoadingComponent from  "${dynamicImport.loadingComponent}" ;
 import renderRouter from "./renderRouter";
 
+const defaultSetting = ${JSON.stringify(defaultSetting, null, "\t")} 
+
+export const SettingContext = React.createContext(defaultSetting);
+
 const routes = ${routerList}
 
 class RouterWrapper extends Component{
-    
-  render(){
-    
-      return(
-        <Router>
-            {renderRouter(routes,LoadingComponent)}
-        </Router>
-  )
- }  
+  render() {
+    return (
+      <SettingContext.Provider value={defaultSetting}>
+        <Router>{renderRouter(routes, LoadingComponent)}</Router>
+      </SettingContext.Provider>
+    );
+  }  
 }
 export default RouterWrapper;`;
 
@@ -49,29 +52,3 @@ const fs = require("fs-extra");
 // With a callback:
 fs.outputFile(routerfilePath, template, err => {});
 
-
-/* let iconList = [];
-
-function getIcon(routes) {
-  routes.forEach(item => {
-    if (item.icon) {
-      iconList.push(item.icon);
-    }
-    if (item.routes) {
-      getIcon(item.routes);
-    }
-  });
-}
-let menuRouters = getIcon(routes);
-menuRouters = JSON.stringify(routes, null, "\t");
-iconList.forEach(item => {
-  menuRouters = menuRouters.replace('"' + item + '"', item);
-});
-
-let menuConfig = `
-import { ${iconList.join(",")} } from "@ant-design/icons"
-
-export default {
-    routes: ${menuRouters}
-}`;
- */

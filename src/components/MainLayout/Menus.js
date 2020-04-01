@@ -2,48 +2,47 @@ import React from "react";
 //import config from "./config";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
+import Icon from "components/Icon"
 const { SubMenu } = Menu;
-const routes = []
-function customMenu(menu) {
-  if (menu.name) {
+
+function CustomMenu(menu) {
+  let MenuIcon  = Icon[menu.icon];
     return (
-      <Menu.Item key={menu.key}>
+      <Menu.Item key={menu.name} >
         <Link to={menu.path}>
           <span>
-            {menu.icon && <menu.icon />}
+            {MenuIcon && <MenuIcon />}
             <span>{menu.name || menu.path}</span>
           </span>
         </Link>
       </Menu.Item>
     );
-  }
-  return null;
 }
 
-function Menus(props) {
-  const menuList = routes
-    .filter((e) => e.name)
-    .map((item, index) => {
-      if (item.routes) {
-        return (
-          <SubMenu
-            key={"sub" + index + 1}
-            title={
-              <span>
-                {item.icon && <item.icon />}
-                <span>{item.name || item.path}</span>
-              </span>
-            }
-          >
-            {item.routes
-              .filter((e) => e.name)
-              .map((element, i) => customMenu({ ...element, key: i }))}
-          </SubMenu>
-        );
-      }
-      return customMenu({ ...item, key: "menu" + index });
-    });
-
+function getMenuList(menus){
+  return menus.map((item, index) => {
+    if (item.children) {
+      let MenuIcon  = Icon[item.icon];
+      return (
+        <SubMenu
+          key={item.name}
+          title={
+            <span>
+               {MenuIcon && <MenuIcon />}
+              <span>{item.name}</span>
+            </span>
+          }
+        >
+          {item.children ? getMenuList(item.children) : null}
+        </SubMenu>
+      );
+    }
+    return CustomMenu(item)
+  });
+}
+function Menus({ menus }) {
+  
+  const menuList = getMenuList(menus)
   return (
     <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
       {menuList}
