@@ -1,5 +1,5 @@
 
-function reducerTitle(breadcrumb,path){
+function reducerTitle(breadcrumb=[],path){
     let title = ""
     breadcrumb.forEach(item => {
         if(item.path.match(path)){
@@ -9,7 +9,7 @@ function reducerTitle(breadcrumb,path){
     return title;
 }
 
-export default function getPageTitle({ breadcrumb, setting = { }, path }) {
+export default function getPageTitle({ breadcrumb=[], setting = { }, path }) {
     let title = "";
      title = reducerTitle(breadcrumb, path)
 

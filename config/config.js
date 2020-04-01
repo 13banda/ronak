@@ -22,8 +22,13 @@ module.exports = {
               component: "pages/User/SignUp"
             },
             {
+              path: "/user",
+              redirect: "/user/login"
+            },
+            {
               component: "pages/404"
             }
+
           ]
         },
         {

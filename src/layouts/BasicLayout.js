@@ -8,7 +8,12 @@ const menuDataRenderer = menuList => {
 
 function BasicLayout(props) {
   return (
-    <MainLayout logo={Logo} {...props} menuDataRenderer={menuDataRenderer}>
+    <MainLayout logo={Logo} {...props} menuDataRenderer={menuDataRenderer} breadcrumbRender={(routes) => {
+      return [{
+         path: "/",
+         breadcrumbName: "Home",
+      },...routes]
+    }}>
       {props.children}
     </MainLayout>
   );

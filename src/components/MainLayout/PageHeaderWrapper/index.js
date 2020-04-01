@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, Link } from "react-router-dom";
 import { PageHeader } from "antd";
 import "./index.less";
 import getPageTitle from "../getPageTitle";
 import RouteContext from "../RouteContext";
 
+const breadcrumbItemRenderer = (route, params, routes, paths) =>{
+  const last = route.path === routes[routes.length - 1].path
+  return last ?
+  <span>{route.breadcrumbName}</span>
+  : (
+  <Link to={route.path}>{route.breadcrumbName}</Link>
+  )
+}
 export default function PageHeaderWrapper(props) {
   const { content } = props;
   const routerMatch = useRouteMatch();
@@ -14,18 +22,10 @@ export default function PageHeaderWrapper(props) {
     breadcrumb: breadcrumb,
     path: routerMatch.path
   });
-  const routes = [
-    {
-      path: "/",
-      breadcrumbName: "Home"
-    },
-    ...breadcrumb
-  ];
-  console.log(breadcrumb)
   return (
     <div>
       <div className="page-header-wrapper">
-        <PageHeader title={title} breadcrumb={{ routes }}>
+        <PageHeader title={title} breadcrumb={{ routes: breadcrumb, itemRender: breadcrumbItemRenderer  }}>
           {content}
         </PageHeader>
       </div>

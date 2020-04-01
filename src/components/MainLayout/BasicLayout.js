@@ -21,6 +21,7 @@ function MainLayout(props) {
     route = {
       routes: []
     },
+    breadcrumbRender,
     menuDataRenderer,
     rightContentRender,
     children,
@@ -40,8 +41,12 @@ function MainLayout(props) {
   let menuList = parseMenu(route.routes);
   menuList = menuDataRenderer(menuList);
   
-  const breadcrumbMenuList = getBreadcrumb(menuList,location.pathname);
-  
+  const getBreadcrumbMenuList = () => {
+   let breadcrumbList =  getBreadcrumb(menuList,location.pathname);
+    return breadcrumbRender(breadcrumbList);
+  }
+  const breadcrumbMenuList = getBreadcrumbMenuList();
+  console.log(breadcrumbMenuList)
   const title = getPageTitle({
     breadcrumb: breadcrumbMenuList,
     setting,

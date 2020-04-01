@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './App.css'
 import App from "pages/.App/Routers";
 import * as serviceWorker from './serviceWorker';
-import "global.js"
-import "global.css"
+import "./global.js"
+import "./global.css"
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
