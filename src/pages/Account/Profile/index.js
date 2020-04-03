@@ -91,7 +91,7 @@ function ProfilePage(props) {
             </Form.Item>
             <Form.Item {...tailLayout}>
               <Button type="primary" htmlType="submit">
-                Update Information
+                Update Profile
               </Button>
             </Form.Item>
           </Col>
