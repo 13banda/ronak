@@ -1,6 +1,10 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
-import { LockOutlined, UserOutlined, GoogleOutlined } from "@ant-design/icons"
+import { Form, Input, Button, Divider } from "antd";
+import {
+  LockOutlined,
+  UserOutlined,
+  GoogleOutlined
+} from "@ant-design/icons";
 import { useAuth0 } from "auth0";
 
 const tailLayout = {
@@ -25,7 +29,7 @@ function LoginForm(props) {
           }
         ]}
       >
-        <Input prefix={<UserOutlined />} placeholder="Username"/>
+        <Input prefix={<UserOutlined />} placeholder="Username" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -43,9 +47,17 @@ function LoginForm(props) {
           Log In
         </Button>
       </Form.Item>
-      <div style={{ textAlign: "center", marginBottom: 5}}>or</div>
+      <Divider style={{ color: "#333", fontWeight: "normal" }}>
+        or
+      </Divider>
       <Form.Item {...tailLayout}>
-      <Button block onClick={() => loginWithRedirect({})} icon={<GoogleOutlined />}>Login with Google</Button>
+        <Button
+          block
+          onClick={() => loginWithRedirect({})}
+          icon={<GoogleOutlined />}
+        >
+          Login with Google
+        </Button>
       </Form.Item>
       {`is logined:${isAuthenticated}`}
     </Form>

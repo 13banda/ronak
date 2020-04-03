@@ -92,6 +92,11 @@ const routes = [
             exact: true,
           },
           {
+            path: "/profile",
+            component: lazy(() => import("pages/Account/Profile")),
+            exact: true,
+          },
+          {
             path: "/",
             redirect: "/dashboard",
           },

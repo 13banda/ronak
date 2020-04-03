@@ -74,6 +74,11 @@ module.exports = {
               exact: true
             },
             {
+              path: "/profile",
+              component: "pages/Account/Profile",
+              exact: true
+            },
+            {
               path: "/",
               redirect: "/dashboard"
             },
