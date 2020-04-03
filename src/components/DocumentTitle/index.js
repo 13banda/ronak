@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import withSideEffect from "react-side-effect";
 
@@ -7,7 +7,7 @@ function DocumentTitle(props) {
   return <>{props.children}</> || null;
 }
 
-DocumentTitle.propTypes = {
+DocumentTitle.propTypees = {
   title: PropTypes.string.isRequired,
 };
 

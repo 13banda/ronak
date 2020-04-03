@@ -4,7 +4,6 @@ import useSetting from "hooks/Setting";
 import "./UserLayout.less"
 import { ReactComponent as logo } from "assets/logo.svg";
 import Icon from "@ant-design/icons";
-import { Button } from "antd";
 
 function UserLayout({ children }) {
   const setting = useSetting();

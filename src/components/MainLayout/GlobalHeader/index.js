@@ -8,7 +8,6 @@ function GlobalHeader(props) {
     isMobile,
     logo,
     rightContentRender,
-    menuHeaderRender,
     className: propClassName,
     style,
     collapsed,
