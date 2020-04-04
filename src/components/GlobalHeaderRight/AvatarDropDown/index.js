@@ -7,26 +7,33 @@ import {
 } from "@ant-design/icons";
 import "./index.less";
 import { Link } from "react-router-dom";
-function UserCard(props) {
+
+function UserCard({ user }) {
   return (
     <div style={{ padding: "10px 15px", display: "flex" }}>
-      <Avatar icon={<UserOutlined />} />
+      <Avatar src={user.picture} />
       <div style={{ marginLeft: 10 }}>
-        <p style={{ marginTop: 3, marginBottom: 0 }}>Sandeep Singh</p>
+  <p style={{ marginTop: 3, marginBottom: 0 }}>{user.name}</p>
       </div>
     </div>
   );
 }
-function AvatarDropDown(props) {
+function AvatarDropDown({ user,onLogout }) {
+/*   function handleMenuClick(event){
+    if(event.key === "3"){
+      event.preventDefault();
+    
+    }
+  } */
   const menu = (
-    <Menu>
-      <UserCard />
+    <Menu >
+      <UserCard user={user}/>
       <Menu.Divider />
       <Menu.Item key="1">
           <Link to="/profile" ><UserOutlined /> Profile</Link>
       </Menu.Item>
       <Menu.Item key="2">
-          <Link to="/setting"><SettingOutlined /> Settings</Link>
+          <Link to="/settings"><SettingOutlined /> Settings</Link>
       </Menu.Item>
       <Menu.Divider key="4" />
       <Menu.Item key="3">
@@ -37,7 +44,7 @@ function AvatarDropDown(props) {
   return (
     <div className="user-avatar">
       <Dropdown overlay={menu} trigger={["click"]}>
-        <Avatar icon={<UserOutlined />} />
+        <Avatar src={user.picture} icon={<UserOutlined />} />
       </Dropdown>
     </div>
   );
