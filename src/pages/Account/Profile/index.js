@@ -1,19 +1,21 @@
 import React from "react";
-import { Card, Typography, Form, Input, Button, Select, Row, Col } from "antd";
+import { UserOutlined } from '@ant-design/icons';
+import { Card, Typography, Form, Input, Button, Select, Row, Col, Avatar } from "antd";
+const { Text } = Typography;
 const { Option } = Select;
 
 const layout = {
   labelCol: {
-    span: 6
+    span: 6,
   },
   wrapperCol: {
-    span: 16
-  }
+    span: 16,
+  },
 };
 const tailLayout = {
   wrapperCol: {
     span: 4,
-  }
+  },
 };
 
 function ProfilePage(props) {
@@ -32,6 +34,7 @@ function ProfilePage(props) {
         name="profile-form"
         initialValues={{}}
         onFinish={onFinish}
+        hideRequiredMark
       >
         <Row>
           <Col offset={1} span={12}>
@@ -41,8 +44,8 @@ function ProfilePage(props) {
               rules={[
                 {
                   required: true,
-                  message: "Please inpur Name"
-                }
+                  message: "Please inpur Name",
+                },
               ]}
             >
               <Input />
@@ -53,8 +56,8 @@ function ProfilePage(props) {
               rules={[
                 {
                   required: true,
-                  message: "Please inpur Email"
-                }
+                  message: "Please inpur Email",
+                },
               ]}
             >
               <Input />
@@ -65,8 +68,8 @@ function ProfilePage(props) {
               rules={[
                 {
                   required: true,
-                  message: "Please input name"
-                }
+                  message: "Please input name",
+                },
               ]}
             >
               <Input />
@@ -77,8 +80,8 @@ function ProfilePage(props) {
               rules={[
                 {
                   required: true,
-                  message: "Please input personal profile!"
-                }
+                  message: "Please input personal profile!",
+                },
               ]}
             >
               <Select placeholder="Select a class" allowClear>
@@ -89,13 +92,48 @@ function ProfilePage(props) {
                 <Option value="class 5">Class 5</Option>
               </Select>
             </Form.Item>
+            <Form.Item
+              label="Personal profile"
+              name="personal_profile"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input personal profile!",
+                },
+              ]}
+            >
+              <Input.TextArea
+                autoSize={{ minRows: 4, maxRows: 6 }}
+                placeholder="Brief Introduction to your self"
+              />
+            </Form.Item>
+            <Form.Item label="Address">
+              <Input.Group compact>
+                <Form.Item
+                  name={["address", "province"]}
+                  noStyle
+                >
+                   <Input style={{ width: "50%" }} placeholder="Input street" />
+                </Form.Item>
+                <Form.Item
+                  name={["address", "street"]}
+                  noStyle
+                >
+                  <Input style={{ width: "50%" }} placeholder="Input street" />
+                </Form.Item>
+              </Input.Group>
+            </Form.Item>
             <Form.Item {...tailLayout}>
               <Button type="primary" htmlType="submit">
                 Update Information
               </Button>
             </Form.Item>
           </Col>
-          <Col span={12}></Col>
+          <Col span={11} >
+            <Text>Avatar</Text>
+            <br />
+            <Avatar icon={<UserOutlined />} size={130}/>
+          </Col>
         </Row>
       </Form>
     </Card>
