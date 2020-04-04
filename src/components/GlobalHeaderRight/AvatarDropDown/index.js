@@ -18,15 +18,14 @@ function UserCard({ user }) {
     </div>
   );
 }
-function AvatarDropDown({ user,onLogout }) {
-/*   function handleMenuClick(event){
+function AvatarDropDown({ user,logout }) {
+   function handleMenuClick(event){
     if(event.key === "3"){
-      event.preventDefault();
-    
+      logout()
     }
-  } */
+  } 
   const menu = (
-    <Menu >
+    <Menu onClick={handleMenuClick}>
       <UserCard user={user}/>
       <Menu.Divider />
       <Menu.Item key="1">

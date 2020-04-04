@@ -4,13 +4,15 @@ import authConfig from "auth0/config.json";
 import { useHistory } from "react-router-dom";
 
 function BlankLayout({ children }) {
-  const history = useHistory();
+  console.log("updated reloaded")
+   const history = useHistory();
   const onRedirectCallback = appState => {
+    console.log(appState)
     history.push(
       appState && appState.targetUrl
         ? appState.targetUrl
         : window.location.pathname
-    );
+    ); 
   };
   return (
     <Auth0Provider

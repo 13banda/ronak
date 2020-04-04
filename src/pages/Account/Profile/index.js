@@ -1,6 +1,6 @@
 import React from "react";
-import { UserOutlined } from '@ant-design/icons';
 import { Card, Typography, Form, Input, Button, Select, Row, Col, Avatar } from "antd";
+import { useAuth0 } from "auth0";
 const { Text } = Typography;
 const { Option } = Select;
 
@@ -19,6 +19,7 @@ const tailLayout = {
 };
 
 function ProfilePage(props) {
+  const { user } = useAuth0();
   function onFinish(value) {
     console.log(value);
   }
@@ -32,9 +33,13 @@ function ProfilePage(props) {
         {...layout}
         layout="vertical"
         name="profile-form"
-        initialValues={{}}
         onFinish={onFinish}
         hideRequiredMark
+        initialValues={{
+          name: user ? user.name : null,
+          email: user ? user.email : null,
+          nickname: user ? user.nickname : null
+        }}
       >
         <Row>
           <Col offset={1} span={12}>
@@ -64,7 +69,7 @@ function ProfilePage(props) {
             </Form.Item>
             <Form.Item
               label="Nickname"
-              name="mickname"
+              name="nickname"
               rules={[
                 {
                   required: true,
@@ -132,7 +137,7 @@ function ProfilePage(props) {
           <Col span={11} >
             <Text>Avatar</Text>
             <br />
-            <Avatar icon={<UserOutlined />} size={130}/>
+            <Avatar src={user ? user.picture : null} size={130}/>
           </Col>
         </Row>
       </Form>
