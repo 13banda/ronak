@@ -40,7 +40,7 @@ function LoginForm(props) {
           }
         ]}
       >
-        <Input prefix={<LockOutlined />} placeholder="password" />
+        <Input.Password prefix={<LockOutlined />} visibilityToggle placeholder="password" />
       </Form.Item>
       <Form.Item {...tailLayout}>
         <Button type="primary" block htmlType="submit">
