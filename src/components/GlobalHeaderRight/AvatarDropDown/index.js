@@ -22,6 +22,7 @@ function AvatarDropDown({ user,logout }) {
    function handleMenuClick(event){
     if(event.key === "3"){
       logout()
+      localStorage.setItem("authority",null)
     }
   } 
   const menu = (

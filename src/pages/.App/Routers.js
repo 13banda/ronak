@@ -52,17 +52,20 @@ const routes = [
       {
         path: "/",
         component: lazy(() => import("layouts/BasicLayout")),
+        authority: ["admin"],
         routes: [
           {
             name: "Dashboard",
             icon: "DashboardOutlined",
             path: "/dashboard",
             component: lazy(() => import("pages/dashboard")),
+            authority: ["admin"],
           },
           {
             name: "Student",
             path: "/student",
             icon: "UserOutlined",
+            authority: ["admin"],
             routes: [
               {
                 name: "Student List",
@@ -70,6 +73,7 @@ const routes = [
                 path: "/student/list",
                 component: lazy(() => import("pages/Student/StudentList")),
                 exact: true,
+                authority: ["admin"],
               },
               {
                 name: "Add Student",
@@ -77,6 +81,7 @@ const routes = [
                 path: "/student/add",
                 component: lazy(() => import("pages/Student/AddStudent")),
                 exact: true,
+                authority: ["admin"],
               },
               {
                 path: "/student",
@@ -93,6 +98,7 @@ const routes = [
           },
           {
             path: "/profile",
+            authority: ["admin"],
             component: lazy(() => import("pages/Account/Profile")),
             exact: true,
           },

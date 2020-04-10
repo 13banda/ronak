@@ -34,31 +34,36 @@ module.exports = {
         {
           path: "/",
           component: "layouts/BasicLayout",
+          authority: ["admin"],
           routes: [
             {
               name: "Dashboard",
               icon: "DashboardOutlined",
               path: "/dashboard",
-              component: "pages/dashboard"
+              component: "pages/dashboard",
+              authority: ["admin"],
             },
             {
               name: "Student",
               path: "/student",
               icon: "UserOutlined",
+              authority: ["admin"],
               routes: [
                 {
                   name: "Student List",
                   icon: "UnorderedListOutlined",
                   path: "/student/list",
                   component: "pages/Student/StudentList",
-                  exact: true
+                  exact: true,
+                  authority: ["admin"],
                 },
                 {
                   name: "Add Student",
                   icon: "UserAddOutlined",
                   path: "/student/add",
                   component: "pages/Student/AddStudent",
-                  exact: true
+                  exact: true,
+                  authority: ["admin"],
                 },
                 {
                   path: "/student",
@@ -75,6 +80,7 @@ module.exports = {
             },
             {
               path: "/profile",
+              authority: ["admin"],
               component: "pages/Account/Profile",
               exact: true
             },
