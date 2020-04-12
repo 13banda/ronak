@@ -1,8 +1,11 @@
 
+const { pathToRegexp } = require("path-to-regexp");
+ 
 function reducerTitle(breadcrumb=[],path){
     let title = ""
     breadcrumb.forEach(item => {
-        if(item.path.match(path)){
+        if(pathToRegexp(`${item.path}.*`).test(path)){
+            // exact match
           title = item.breadcrumbName
         }
     })

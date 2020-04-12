@@ -1,6 +1,6 @@
 const { routes, dynamicImport } = require("../config/config");
 const defaultSetting = require("../config/defaultSetting")
-const routerfilePath = "src/pages/.App/Routers.js";
+const routerfilePath = "src/pages/.app/Routers.js";
 let r = [];
 function renderRoute(item) {
   if(item.component){

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css'
-import App from "pages/.App/Routers";
+import App from "pages/.app/Routers";
 import * as serviceWorker from './serviceWorker';
 import "./global.js"
 import "./global.css"

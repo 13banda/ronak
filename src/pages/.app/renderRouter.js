@@ -1,7 +1,9 @@
 import React, { Suspense } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Switch, Redirect, Route } from "react-router-dom";
+import Authorized from "pages/Authorized";
 
 function renderRouter(routes, LoadingComponent) {
+  console.log("rerender");
   return (
     <Switch>
       {routes.map((route, index) => (
@@ -13,10 +15,12 @@ function renderRouter(routes, LoadingComponent) {
             if (route.component) {
               return (
                 <Suspense fallback={<LoadingComponent />}>
-                  <route.component {...props} route={route}>
-                    {route.routes &&
-                      renderRouter(route.routes, LoadingComponent)}
-                  </route.component>
+                  <Authorized route={route} {...props}>
+                    <route.component {...props} route={route}>
+                      {route.routes &&
+                        renderRouter(route.routes, LoadingComponent)}
+                    </route.component>
+                  </Authorized>
                 </Suspense>
               );
             } else if (route.routes) {

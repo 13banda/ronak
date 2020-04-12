@@ -17,7 +17,7 @@ function LoginForm(props) {
     console.log(values);
   };
 
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect} = useAuth0();
   return (
     <Form layout="vertical" name="login-form" onFinish={onFinish}>
       <Form.Item

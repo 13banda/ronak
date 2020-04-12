@@ -54,6 +54,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "path-to-regexp": "^6.1.0",
     "prettier": "^2.0.2",
     "react-device-detect": "^1.11.14",
     "react-helmet-async": "^1.0.4",

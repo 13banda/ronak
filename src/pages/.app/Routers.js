@@ -52,7 +52,8 @@ const routes = [
       {
         path: "/",
         component: lazy(() => import("layouts/BasicLayout")),
-        authority: ["admin"],
+        Routes: ["pages/Authorized"],
+        authority: ["admin", "user"],
         routes: [
           {
             name: "Dashboard",

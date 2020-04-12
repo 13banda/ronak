@@ -34,7 +34,8 @@ module.exports = {
         {
           path: "/",
           component: "layouts/BasicLayout",
-          authority: ["admin"],
+          Routes: ["pages/Authorized"],
+          authority: ["admin","user"],
           routes: [
             {
               name: "Dashboard",
