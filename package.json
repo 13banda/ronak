@@ -13,6 +13,7 @@
     "craco-antd": "^1.14.1",
     "foreman": "^3.0.1",
     "fs-extra": "^9.0.0",
+    "husky": "^4.2.5",
     "nodemon": "^2.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",

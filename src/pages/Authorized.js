@@ -7,7 +7,7 @@ const getRouteAuthority = (path, routeData) => {
     let authorities;
     routeData.forEach( route => {
         // match prefix
-        if(pathToRegexp(`${ route.path}.*`).test(path)) {
+        if(route.path && pathToRegexp(`${ route.path}`).test(path)) {
             // exact match
             if(route.path === path){
                 authorities = route.authority || authorities;
